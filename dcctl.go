@@ -1,9 +1,9 @@
 package main
 
 import (
-	"errors"
 	"flag"
 	"fmt"
+	toolbox "github.com/PeterHickman/toolbox"
 	"os"
 	"os/exec"
 	"strings"
@@ -11,22 +11,9 @@ import (
 
 var possible = []string{"docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml"}
 
-func fileExists(filename string) bool {
-	ok := true
-
-	file, err := os.OpenFile(filename, os.O_RDONLY, 0644)
-	if errors.Is(err, os.ErrNotExist) {
-		ok = false
-	} else {
-		file.Close()
-	}
-
-	return ok
-}
-
 func find_compose_file() string {
 	for _, e := range possible {
-		if fileExists(e) {
+		if toolbox.FileExists(e) {
 			return e
 		}
 	}
@@ -72,7 +59,7 @@ func main() {
 	var compose_file string
 	if *given_file == "" {
 		compose_file = find_compose_file()
-	} else if fileExists(*given_file) {
+	} else if toolbox.FileExists(*given_file) {
 		compose_file = *given_file
 	} else {
 		compose_file = ""
