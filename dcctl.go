@@ -5,7 +5,6 @@ import (
 	"fmt"
 	toolbox "github.com/PeterHickman/toolbox"
 	"os"
-	"os/exec"
 	"strings"
 )
 
@@ -34,22 +33,6 @@ func usage(cmd string) {
 	fmt.Println("    down - take down the services in docker-compose.yaml")
 
 	os.Exit(1)
-}
-
-func cmd_up(compose_file string) {
-	cmd := exec.Command("docker", "compose", "--file", compose_file, "up", "--detach")
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	_ = cmd.Run()
-}
-
-func cmd_down(compose_file string) {
-	cmd := exec.Command("docker", "compose", "--file", compose_file, "down")
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	_ = cmd.Run()
 }
 
 func main() {
@@ -81,9 +64,9 @@ func main() {
 	c := strings.ToLower(flag.Arg(0))
 	switch c {
 	case "up":
-		cmd_up(compose_file)
+		toolbox.Command("docker compose --file " + compose_file + " up --detach")
 	case "down":
-		cmd_down(compose_file)
+		toolbox.Command("docker compose --file " + compose_file + " down")
 	default:
 		usage(c)
 	}

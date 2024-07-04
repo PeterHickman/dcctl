@@ -1,2 +1,4 @@
 github.com/PeterHickman/toolbox v0.0.0-20240703170653-c43326e9214c h1:zTqSIuHZ1WGqVC2NaxgXvzyFkoWMwpMzU9pnsLuXtOw=
 github.com/PeterHickman/toolbox v0.0.0-20240703170653-c43326e9214c/go.mod h1:R1OOjNp8kIWacudQi1SDZrCYnfjU5y/2yq3HCuTIHBg=
+github.com/PeterHickman/toolbox v1.0.0 h1:dlY8Gcm//or+wyN4IYvcEy4HPlwAxRE6ixP9qUoIzIE=
+github.com/PeterHickman/toolbox v1.0.0/go.mod h1:R1OOjNp8kIWacudQi1SDZrCYnfjU5y/2yq3HCuTIHBg=
